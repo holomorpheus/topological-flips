@@ -4,6 +4,10 @@
 
 A script which creates animations of different skate tricks. Program will ask for the user's operating system.
 
+Authors:  
+José Bravo (@jbravo87)  
+Gabriel Martins (@holomorpheus)
+
 __Necessary Applications__
 
 - This software uses ImageMagick 7.0.11 to render GIF of skateboard stunt.
