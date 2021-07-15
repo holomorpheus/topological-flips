@@ -15,40 +15,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import matrixModule
 
-
-class SkateTrick:
-
-    def __init__(self, name, os="windows"):
-
-        '''The initialization method
-
-        Parameters
-        ----------
-        self.name : str
-            User input for the skateboard trick of interest.
-        self.matrix : str
-            Cross-reference 'name' with matrixModule to find rotational matrix.
-            It is a symbolic matrix using SymPy.
-        self.title : str
-            Parameter will also be used to find the plot title for the GIFs.
-
-        Variables
-        ---------
-        os : str
-            Defaults to Windows operating system. Can also choose OSX.
-
-        '''
-
-        self.name = self.clean_name(name)
-        self.matrix = matrixModule.tricks[self.name]
-        self.title = self.plot_titles[self.name]
-
-        if os == "windows":
-            self.os = os
-        if os == "osx":
-            self.os = os
-
-    def clean_name(self, name):
+def clean_name(name):
 
         '''Name cleaning function.
 
@@ -70,6 +37,34 @@ class SkateTrick:
             if ord(char) > 64 and ord(char) < 91:
                 newname += chr(ord(char)+32)
         return newname
+
+class SkateTrick:
+
+    def __init__(self, name):
+
+        '''The initialization method
+
+        Parameters
+        ----------
+        self.name : str
+            User input for the skateboard trick of interest.
+        self.matrix : str
+            Cross-reference 'name' with matrixModule to find rotational matrix.
+            It is a symbolic matrix using SymPy.
+        self.title : str
+            Parameter will also be used to find the plot title for the GIFs.
+
+        Variables
+        ---------
+        os : str
+            Defaults to Windows operating system. Can also choose OSX.
+
+        '''
+
+        self.name = clean_name(name)
+        self.matrix = matrixModule.tricks[self.name]
+        self.matrix.simplify()
+        self.title = self.plot_titles[self.name]
 
     # Create a dictionary for all the titles for different tricks
     # Words start with upper case letters and are spaced
@@ -104,17 +99,10 @@ class SkateTrick:
 
         '''
 
-        self.name = self.clean_name(name)
+        self.name = clean_name(name)
         self.matrix = matrixModule.tricks[self.name]
+        self.matrix.simplify()
         self.title = self.plot_titles[self.name]
-
-    def change_os(self, os):
-        '''Will change operating system to either Windows or Mac (OSX)'''
-
-        if os == "windows":
-            self.os = os
-        if os == "osx":
-            self.os = os
 
     def tricknames(self):
         '''Method to print the list of possible tricks from the dictionary.'''
@@ -247,15 +235,21 @@ class SkateTrick:
             plt.savefig("flipgifs/" + s + ".png", bbox_inches='tight')
             ax.clear()
 
-    def create_gif(self, dyn_frames=60, static_frames=10, delete_frames=True):
+    def create_animation(self, os, file_type, dyn_frames=60, static_frames=10, delete_frames=True):
 
-        if self.os == "windows":
+        if os != "windows" and os != "osx":
+            raise NameError("The operating system is not valid")
+            
+        if file_type != ".gif" and file_type != ".mp4":
+            raise NameError("The file type is not valid")
+
+        if os == "windows":
             filename = self.name
 
             self.create_frames(dyn_frames, static_frames)
             from subprocess import call
             cmd1 = 'cd flipgifs'
-            cmd2 = 'convert *.png ' + filename + '.gif'
+            cmd2 = 'convert *.png ' + filename + file_type
 
             total_cmd = cmd1 + '&&' + cmd2
             call(total_cmd, shell=True)
@@ -265,14 +259,14 @@ class SkateTrick:
                 # Optional: clean up frame png files
                 call("rm -f flipgifs/*.png", shell=True)
 
-        if self.os == "osx":
+        if os == "osx":
             filename = self.name
 
             self.create_frames(dyn_frames, static_frames)
 
             # Convert to gif (works on linux/os-x, requires image-magick)
             from subprocess import call
-            call("cd flipgifs && convert -delay 3 *.png" + filename + ".gif", shell=True)
+            call("cd flipgifs && convert -delay 3 *.png " + filename + file_type, shell=True)
 
             if delete_frames == True:
                 # Optional: clean up frame png files
