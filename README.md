@@ -3,8 +3,8 @@
 A script which creates animations of different skate tricks. Program will ask for the user's operating system.
 
 Authors:  
-Gabriel Martins (@holomorpheus)
-José Bravo (@jbravo87)  
+Gabriel Martins (@holomorpheus)  
+José Bravo (@jbravo87)
 
 __Necessary Applications__
 
