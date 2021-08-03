@@ -1,20 +1,24 @@
-# Python Skate Tricks
+# Skate Flips Animation
 
-A script which creates animations of different skate tricks. Program will ask for the user's operating system.
+A script which can create animations of different skate tricks and generate formulas for their rotation matrices.
 
-Authors:  
+Contributors:  
 Gabriel Martins (@holomorpheus)  
 José Bravo (@jbravo87)
 
 __Necessary Applications__
 
-- This software uses ImageMagick 7.0.11 to render GIF of skateboard stunt.
-- May also need a (La)Tex compiler to see a quality image of rotational matrix.
+- Python 3  
+- Numpy and Matplotlib libraries  
+- ImageMagick 7.0.11
 
-The `main.py` script will require the `SkateTrick` class and `matrixModule` script as well. The `main` script will also print the list of stunts defined by software.
+__How to use__
 
-This software yields the following:
+In order to use this program:  
 
-1. Rotational matrix of the chosen stunt.
-2. A GIF of the skateboard trick.
+1) Clone the repository into a local directory.
+2) Access the directory through the terminal.
+3) Type `python main.py` and hit enter.
+4) Follow the prompts in the python console.
 
+Alternatively you may run the `main.py` script in your preferred Python IDE and follow the prompts in the console.  
