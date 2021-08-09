@@ -1,4 +1,4 @@
-# Skate Flips Animation
+# Topological Flips  
 
 A script which can create animations of different skate tricks and generate formulas for their rotation matrices.
 
