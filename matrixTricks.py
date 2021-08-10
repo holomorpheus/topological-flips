@@ -8,18 +8,14 @@ Authors:
 
 import sympy as sym
 
-# Learn how to hide certain attributes
-
 cos, sin, pi = sym.cos, sym.sin, sym.pi
 
- 
-
-# First, will establish the temporal parameter as t
+# Time paramter t
 
 t = sym.Symbol( 't' )
 
 
-# Will use hk as the variable name for the half-kickflip matrix
+# Half-kickflip matrix
 
 hk = sym.Matrix([[cos(pi*t), 0, -sin(pi*t)],
 
@@ -29,7 +25,7 @@ hk = sym.Matrix([[cos(pi*t), 0, -sin(pi*t)],
 
 
 
-# Will use hh as the variable name for the half-heelflip matrix
+# Half-heelflip matrix
 
 hh = sym.Matrix([[cos(-pi*t), 0, -sin(-pi*t)],
 
@@ -39,9 +35,7 @@ hh = sym.Matrix([[cos(-pi*t), 0, -sin(-pi*t)],
 
 
 
-# Now to define the frontside-shoveit matrix
-
-# Will use fs as the variable for the matrix
+# Frontside shove-it matrix
 
 fs = sym.Matrix([[cos(pi*t), -sin(pi*t), 0],
 
@@ -51,9 +45,7 @@ fs = sym.Matrix([[cos(pi*t), -sin(pi*t), 0],
 
 
 
-# Now to define the backside-shoveit matrix
-
-# Will use bs as the variable for the matrix
+# Backside-shoveit matrix
 
 bs = sym.Matrix([[cos(-pi*t), -sin(-pi*t), 0],
 
@@ -63,11 +55,7 @@ bs = sym.Matrix([[cos(-pi*t), -sin(-pi*t), 0],
 
 
 
-# Define ui to be the variable for the matrix of
-
-# 180 degrees rotation around the intermediate axis
-
-# with the front of the skateboard going upward
+# 180 degrees right-handed rotation around the x-axis
 
 ui = sym.Matrix([[1, 0        , 0         ],
 
@@ -79,11 +67,7 @@ ui = sym.Matrix([[1, 0        , 0         ],
 
 
 
-# Define di to be the variable for the matrix of
-
-# 180 degrees rotation around the intermediate axis
-
-# with the front of the skateboard going upward
+# 180 degrees left-handed rotation around the x-axis
 
 di = sym.Matrix([[1, 0         , 0          ],
 
@@ -93,9 +77,7 @@ di = sym.Matrix([[1, 0         , 0          ],
 
 
 
-# Dictionary for our collection of tricks.
-
-# Remove spaces from dictionary indices
+# Dictionary for the collection of tricks.
 
 tricks = {'kickflip': hk*hk,
 
