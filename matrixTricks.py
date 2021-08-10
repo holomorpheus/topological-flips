@@ -11,74 +11,44 @@ import sympy as sym
 cos, sin, pi = sym.cos, sym.sin, sym.pi
 
 # Time paramter t
-
 t = sym.Symbol( 't' )
 
-
 # Half-kickflip matrix
-
 hk = sym.Matrix([[cos(pi*t), 0, -sin(pi*t)],
-
                  [0        , 1, 0        ],
-    
                  [sin(pi*t), 0,cos(pi*t)]]);
 
 
-
 # Half-heelflip matrix
-
 hh = sym.Matrix([[cos(-pi*t), 0, -sin(-pi*t)],
-
-                 [0         , 1, 0         ],
-    
+                 [0         , 1, 0         ],  
                  [sin(-pi*t), 0, cos(-pi*t)]]);
 
 
 
 # Frontside shove-it matrix
-
 fs = sym.Matrix([[cos(pi*t), -sin(pi*t), 0],
-
-                 [sin(pi*t), cos(pi*t) , 0],
-    
+                 [sin(pi*t), cos(pi*t) , 0],    
                  [0        , 0         , 1]]);
 
 
 
 # Backside-shoveit matrix
-
 bs = sym.Matrix([[cos(-pi*t), -sin(-pi*t), 0],
-
-                 [sin(-pi*t), cos(-pi*t) , 0],
-    
+                 [sin(-pi*t), cos(-pi*t) , 0],    
                  [0         , 0          , 1]]);
 
-
-
 # 180 degrees right-handed rotation around the x-axis
-
 ui = sym.Matrix([[1, 0        , 0         ],
-
-                 [0, cos(pi*t), -sin(pi*t)],
-    
+                 [0, cos(pi*t), -sin(pi*t)],    
                  [0, sin(pi*t), cos(pi*t) ]]);
 
-
-
-
-
 # 180 degrees left-handed rotation around the x-axis
-
 di = sym.Matrix([[1, 0         , 0          ],
-
-                 [0, cos(-pi*t), -sin(-pi*t)],
-    
+                 [0, cos(-pi*t), -sin(-pi*t)],    
                  [0, sin(-pi*t), cos(-pi*t) ]]);
 
-
-
 # Dictionary for the collection of tricks.
-
 tricks = {'kickflip': hk*hk,
 
           'varialkickflip': fs*hk*hk,

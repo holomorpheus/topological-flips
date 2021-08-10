@@ -20,18 +20,18 @@ def frame_number(i, total_frames):
     
     if i < 10:
         if total_frames < 100:
-            s = "0" + str(i)
+            s = "0" + str(i);
         elif total_frames < 1000:
-            s = "00" + str(i)
+            s = "00" + str(i);
         else:
             raise ValueError("The number of frames exceeds 999.")
     elif i < 100:
         if total_frames > 99:
-            s = "0" + str(i)
+            s = "0" + str(i);
         else:
-            s = str(i)
+            s = str(i);
     else:
-        s = str(i)
+        s = str(i);
     
     return s
     
@@ -67,18 +67,12 @@ def generate_frames(symb_R, title, dyn_frames=60, static_frames=18, vertical = T
     if not os.path.exists("animation"):
         os.mkdir("animation")
 
-    # Relevant mathematical functions and constants
-    cos = np.cos
-    sin = np.sin
-    pi = np.pi
-
     dx, dy = 1, 3.5;
 
     P0 = skate_curve(dx, dy);
 
     ax = plt.axes(projection='3d');
 
-    # Create the frames
     # Create initial static frames
     ax.set_xticks([-dy, -dy/2, 0, dy/2, dy])
     ax.set_yticks([-dy, -dy/2, 0, dy/2, dy])
@@ -90,12 +84,11 @@ def generate_frames(symb_R, title, dyn_frames=60, static_frames=18, vertical = T
 
     ax.set_title(title)
 
-    x0 = P0[0, :];
-    y0 = P0[1, :];
-    z0 = P0[2, :];
+    x0, y0, z0 = P0[0, :], P0[1, :], P0[2, :];
     
     ax.plot(x0, y0, z0)
     
+    # Save static frames
     for i in range(int(static_frames/2)):
         
             si = frame_number(i, dyn_frames+static_frames);
@@ -107,6 +100,7 @@ def generate_frames(symb_R, title, dyn_frames=60, static_frames=18, vertical = T
 
     ax.clear()
     
+    # Create dynamics frames
     for i in range(dyn_frames):
         
         ax.set_xticks([-dy, -dy/2, 0, dy/2, dy])
@@ -120,19 +114,16 @@ def generate_frames(symb_R, title, dyn_frames=60, static_frames=18, vertical = T
         ax.set_title(title)
         
         t = sym.Symbol( 't' );
-        
         ti = i/(dyn_frames - 1);
 
         Ri = symb_R.subs(t, ti);
         Ri = np.array(Ri).astype(np.float64);
         P = Ri@P0;
 
-        xi = P[0, :];
-        yi = P[1, :];
-        zi = P[2, :];
+        xi, yi, zi = P[0, :], P[1, :], P[2, :];
         
         if vertical:
-            dh = (dy+2)*sin(pi*ti);
+            dh = (dy+2)*np.sin(np.pi*ti);
             zi = zi + dh;
 
         ax.plot(xi, yi, zi)
@@ -145,27 +136,27 @@ def generate_frames(symb_R, title, dyn_frames=60, static_frames=18, vertical = T
         ax.clear()
 
 def animate(symb_R, title, filename,
-                     os, file_type,
+                     op_syst, file_type,
                      dyn_frames=60, static_frames=18,
                      delete_frames=True):
     
-    os = misc.clean_name(os);
+    op_syst = misc.clean_name(op_syst);
     
     file_type = misc.clean_name(file_type);
     file_type = "."+file_type;
 
-    if os != "windows" and os != "macos":
+    if op_syst != "windows" and op_syst != "macos":
         raise NameError("The operating system is not valid")
         
     if file_type != ".gif" and file_type != ".mp4":
         raise NameError("The file type is not valid")
+    
+    generate_frames(symb_R, title, dyn_frames = dyn_frames, static_frames = static_frames)
+    
+    # Create animation. Requires ImageMagick
+    
+    if op_syst == "windows":
 
-    if os == "windows":
-
-        generate_frames(symb_R, title, dyn_frames, static_frames)
-        
-        # Create animation. Requires ImageMagick
-        
         cmd1 = 'cd animation';
         cmd2 = 'convert *.png ' + filename + file_type;
 
@@ -180,12 +171,8 @@ def animate(symb_R, title, filename,
             total_cmd = cmd1 + '&&' + cmd2;
             call(total_cmd, shell=True)
 
-    if os == "macos":
+    if op_syst == "macos":
 
-        generate_frames(symb_R, title, dyn_frames = dyn_frames, static_frames = static_frames)
-
-        # Create animation. Requires ImageMagick
-        
         # If delay = N then FPS = 100/N
         
         call("cd animation && convert -delay 4 *.png " + filename + file_type, shell=True)

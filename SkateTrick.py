@@ -86,11 +86,11 @@ class SkateTrick:
         skateAnimation.generate_frames(self.matrix, self.title, dyn_frames, static_frames)
 
 
-    def animate(self, os, file_type, dyn_frames=60, static_frames=18, delete_frames=True):
+    def animate(self, op_syst, file_type, dyn_frames=60, static_frames=18, delete_frames=True):
         
         skateAnimation.animate(self.matrix, self.title, self.name,
-                     os, file_type,
-                     dyn_frames, static_frames)
+                               op_syst, file_type,
+                               dyn_frames, static_frames)
             
 
 
