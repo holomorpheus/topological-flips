@@ -12,7 +12,7 @@ Authors:
 
 import matrixTricks
 import skateAnimation
-import Misc
+import misc
 
 class SkateTrick:
 
@@ -27,7 +27,7 @@ class SkateTrick:
             Name of the skateboard trick.
         '''
 
-        self.name = Misc.clean_name(name);
+        self.name = misc.clean_name(name);
         self.matrix = matrixTricks.tricks[self.name];
         self.matrix.simplify()
         self.title = self.plot_titles[self.name];
@@ -61,7 +61,7 @@ class SkateTrick:
             Change name and matrix to a new trick.
         '''
 
-        self.name = Misc.clean_name(name)
+        self.name = misc.clean_name(name)
         self.matrix = matrixTricks.tricks[self.name]
         self.matrix.simplify()
         self.title = self.plot_titles[self.name]

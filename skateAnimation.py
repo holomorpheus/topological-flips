@@ -10,7 +10,7 @@ Author:
 import numpy as np
 import sympy as sym
 import matplotlib.pyplot as plt
-import Misc
+import misc
 
 import os
 from mpl_toolkits.mplot3d import Axes3D

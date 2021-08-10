@@ -6,8 +6,8 @@ Authors:
 """
 import sympy as sm
 import SkateTrick as st
-import matrixModule
-
+import matrixTricks
+import misc
 
 
 print('Welcome to Topological Flips')
@@ -23,7 +23,7 @@ while main_loop:
         first_input = input()
     
         if first_input == "list tricks":
-            for i in matrixModule.tricks.keys():
+            for i in matrixTricks.tricks.keys():
                 print(i)
         else:
             first_input = st.clean_name(first_input)
@@ -69,9 +69,21 @@ while main_loop:
     
         print('The animation is located in the flipgifs directory.')
     
-    print("Would you like to quit the program?")
-    user_input = input('Enter Y/N: ')
-    
-    if user_input == "Y":
-        main_loop = False;
+    last_question = True;
+    while last_question:
+        
+        print("Would you like to quit the program?")
+        user_input = input('Enter Y/N: ')
+        
+        user_input = misc.clean_name(user_input);
+            
+        if user_input == "y" or user_input == "yes":
+            last_question = False;
+            main_loop = False;
+            
+        elif user_input == "n" or user_input == "no":
+            last_question = False;
+        
+        else:
+            print("Invalid response.")
     
