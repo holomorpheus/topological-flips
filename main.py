@@ -26,7 +26,7 @@ while main_loop:
             for i in matrixTricks.tricks.keys():
                 print(i)
         else:
-            first_input = st.clean_name(first_input)
+            first_input = misc.clean_name(first_input)
             trick = st.SkateTrick(first_input)
             first_interaction = False
     
@@ -46,12 +46,13 @@ while main_loop:
     
     if user_input == '2':
         print('Which operating system are you using?')
-        print('1 -> OSX')
+        print('1 -> macOS')
         print('2 -> Windows')
-        os_input = input('Enter the desired option: ')
+        os_input = input('Enter the desired option: ');
+        os_input = misc.clean_name(os_input);
         
         if os_input == "1":
-            os = "osx";
+            os = "macos";
         if os_input == "2":
             os = "windows";
             
@@ -65,9 +66,9 @@ while main_loop:
         if ft_input == "2":
             file_type = ".gif";
             
-        trick.create_animation(os,file_type)
+        trick.animate(os,file_type)
     
-        print('The animation is located in the flipgifs directory.')
+        print('The animation is located in the animation directory.')
     
     last_question = True;
     while last_question:
