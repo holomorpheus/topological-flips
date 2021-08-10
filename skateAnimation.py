@@ -149,9 +149,9 @@ def animate(symb_R, title, filename,
                      dyn_frames=60, static_frames=18,
                      delete_frames=True):
     
-    os = Misc.clean_name(os);
+    os = misc.clean_name(os);
     
-    file_type = Misc.clean_name(file_type);
+    file_type = misc.clean_name(file_type);
     file_type = "."+file_type;
 
     if os != "windows" and os != "macos":
