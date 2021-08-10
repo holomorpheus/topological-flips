@@ -32,7 +32,7 @@ class SkateTrick:
         self.matrix.simplify()
         self.title = self.plot_titles[self.name];
 
-    # A dictionary for all the titles of different tricks
+    # A dictionary for the plot titles of different tricks
     plot_titles = {'kickflip': 'Kickflip',
                    'varialkickflip': 'Varial Kickflip',
                    'hardflip': 'Hardflip',
@@ -67,7 +67,7 @@ class SkateTrick:
         self.title = self.plot_titles[self.name]
 
     def tricknames(self):
-        '''Method to print the list of possible tricks from the dictionary.'''
+        '''Prints the list of tricks int the collection.'''
         for i in matrixTricks.tricks.keys():
             print(i)
         
