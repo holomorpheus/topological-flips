@@ -10,9 +10,10 @@ Author:
 import numpy as np
 import sympy as sym
 import matplotlib.pyplot as plt
+import os
+
 import misc
 
-import os
 from mpl_toolkits.mplot3d import Axes3D
 from subprocess import call
 

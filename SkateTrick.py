@@ -30,31 +30,9 @@ class SkateTrick:
         self.name = misc.clean_name(name);
         self.matrix = matrixTricks.tricks[self.name];
         self.matrix.simplify()
-        self.title = self.plot_titles[self.name];
+        self.title = matrixTricks.plot_titles[self.name];
 
     # A dictionary for the plot titles of different tricks
-    plot_titles = {'kickflip': 'Kickflip',
-                   'varialkickflip': 'Varial Kickflip',
-                   'hardflip': 'Hardflip',
-                   'frontsideshoveit': 'Frontside Shove-it',
-                   'frontsidepopshoveit': 'Frontside Pop Shove-it',
-                   'frontsideshuvit': 'Frontside Shuvit',
-                   'heelflip': 'Heelflip',
-                   'inwardheelflip': 'Inward Heelflip',
-                   '360popshoveit': '360 Pop Shove-it',
-                   '360shoveit': '360 Shove-it',
-                   '360shuvit': '360 Shuvit',
-                   'frontside360popshoveit': 'Frontside 360 Pop Shove-it',
-                   'frontside360shoveit': 'Frontside 360 Shove-it',
-                   'frontside360shuvit': 'Frontside 360 Shuvit',
-                   'doublekickflip': 'Double Kickflip',
-                   'triplekickflip': 'Triple Kickflip',
-                   'doubleheelflip': 'Double Heelflip',
-                   'nightmareflip': 'Nightmare Flip',
-                   'varialheelflip': 'Varial Heelflip',
-                   '360flip': '360 Flip',
-                   'laserflip': 'Laser Flip',
-                   '360hardflip': '360 Hardflip'}
 
     def changetrick(self, name):
         '''
@@ -64,7 +42,7 @@ class SkateTrick:
         self.name = misc.clean_name(name)
         self.matrix = matrixTricks.tricks[self.name]
         self.matrix.simplify()
-        self.title = self.plot_titles[self.name]
+        self.title = matrixTricks.plot_titles[self.name];
 
     def tricknames(self):
         '''Prints the list of tricks int the collection.'''
