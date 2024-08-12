@@ -2,9 +2,11 @@
 
 A script which can create animations of different skate tricks and generate formulas for their rotation matrices.
 
-Contributors:  
+Author:  
 Gabriel Martins (@holomorpheus)  
-José Bravo (@jbravo87)
+
+Contributors:  
+José Bravo (@jbravo87), Robert Hingtgen, Justus Carlisle
 
 __Necessary Applications__
 
