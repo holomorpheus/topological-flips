@@ -10,6 +10,28 @@ Contributor:
     José Bravo
 """
 
+# Import
+from collections import OrderedDict
+
+def list_fliptricks():
+    
+    print("Flip tricks currently available:")
+    
+    fliplist = dict_trick_handle.values()
+    
+    fliplist = list(OrderedDict.fromkeys(fliplist))
+    
+    for flip in fliplist:
+        
+        print(dict_trick_titles[flip])
+        
+def list_homotopies():
+    
+    print("Flip homotopies currently available:")
+    
+    for homo in dict_def_titles.values():
+        print(homo)
+    
 def clean_name(name):
         '''
         Name cleaning function.
@@ -45,14 +67,30 @@ def clean_name(name):
 
 dict_trick_handle = { 
     'ollie' : 'ollie',
+    'shoveit': 'shoveit',
+    'fsshoveit': 'fsshoveit',
     'kickflip': 'kickflip',
-    'varialkickflip': 'varialflip',
+    'heelflip' : 'heelflip',
+    '360shoveit' : '360shoveit',
+    'fs360shoveit' : 'fs360shoveit',
     'varialflip': 'varialflip',
     'hardflip': 'hardflip',
+    'varialheelflip' : 'varialheelflip',
+    'inwardheelflip' : 'inwardheelflip',
     'muskahardflip': 'muskahardflip',
     'dolphinflip': 'dolphinflip',
-    'shoveit': 'shoveit',
-    'shuvit' : 'shoveit',
+    'doublekickflip' : 'doublekickflip',
+    'triplekickflip' : 'triplekickflip',
+    'doubleheelflip' : 'doubleheelflip',
+    'varialdoubleflip': 'varialdoubleflip',
+    '360flip' : '360flip',
+    'laserflip' : 'laserflip',
+    '360hardflip' : '360hardflip',
+    '540shoveit' : '540shoveit',
+    'fs540shoveit' : 'fs540shoveit',
+    'reversevarialflip': 'reversevarialflip',
+    'wobbling360shoveit' : 'wobbling360shoveit',
+    'wobblingkickflip' : 'wobblingkickflip',
     'popshoveit' : 'shoveit',
     'bsshoveit' : 'shoveit',
     'bsshuvit' : 'shoveit',
@@ -60,15 +98,12 @@ dict_trick_handle = {
     'backsideshoveit' : 'shoveit',
     'backsideshuvit' : 'shoveit',
     'backsidepopshoveit' : 'shoveit',
-    'fsshoveit': 'fsshoveit',
+    'shuvit' : 'shoveit',
     'fsshuvit': 'fsshoveit',
     'fspopshoveit': 'fsshoveit',
     'frontsideshoveit': 'fsshoveit',
     'frontsideshuvit': 'fsshoveit',
     'frontsidepopshoveit': 'fsshoveit',
-    'heelflip' : 'heelflip',
-    'inwardheelflip' : 'inwardheelflip',
-    '360shoveit' : '360shoveit',
     '360shuvit' : '360shoveit',
     '360popshoveit' : '360shoveit',
     'bs360shoveit' : '360shoveit',
@@ -77,25 +112,17 @@ dict_trick_handle = {
     'backside360shoveit' : '360shoveit',
     'backside360shuvit' : '360shoveit',
     'backside360popshoveit' : '360shoveit',
-    'fs360shoveit' : 'fs360shoveit',
+    'varialkickflip': 'varialflip',
+    'varialheel' : 'varialheelflip',
     'fs360shuvit' : 'fs360shoveit',
     'fs360popshoveit' : 'fs360shoveit',
     'frontside360shoveit' : 'fs360shoveit',
     'frontside360shuvit' : 'fs360shoveit',
     'frontside360popshoveit' : 'fs360shoveit',
-    'doublekickflip' : 'doublekickflip',
-    'triplekickflip' : 'triplekickflip',
-    'doubleheelflip' : 'doubleheelflip',
-    'varialdoubleflip': 'varialdoubleflip',
     'varialdoublekickflip' : 'varialdoubleflip',
-    'nightmareflip' : 'nightmareflip',
-    'varialheelflip' : 'varialheelflip',
-    '360flip' : '360flip',
+    'nightmareflip' : 'varialdoubleflip',
     '360kickflip' : '360flip',
     'treflip' : '360flip',
-    'laserflip' : 'laserflip',
-    '360hardflip' : '360hardflip',
-    '540shoveit' : '540shoveit',
     '540shuvit' : '540shoveit',
     '540popshoveit' : '540shoveit',
     'bs540shoveit' : '540shoveit',
@@ -104,16 +131,12 @@ dict_trick_handle = {
     'backside540shoveit' : '540shoveit',
     'backside540shuvit' : '540shoveit',
     'backside540popshoveit' : '540shoveit',
-    'fs540shoveit' : 'fs540shoveit',
     'fs540shuvit' : 'fs540shoveit',
     'fs540popshoveit' : 'fs540shoveit',
     'frontside540shoveit' : 'fs540shoveit',
     'frontside540shuvit' : 'fs540shoveit',
     'frontside540popshoveit' : 'fs540shoveit',
-    'reversevarialflip': 'reversevarialflip',
-    'reversevarial': 'reversevarialflip',
-    'wobbling360shoveit' : 'wobbling360shoveit',
-    'wobblingkickflip' : 'wobblingkickflip'}
+    'reversevarial': 'reversevarialflip'}
 
 def trick_handle(cleaned_name):
     return dict_trick_handle[cleaned_name]
@@ -209,7 +232,9 @@ dict_trick_titles = {
     'frontside540popshoveit': 'Frontside 540 Pop Shove-it',
     'reversevarialflip': 'Reverse Varialflip',
     'reversevarial': 'Reverse Varial',
-    'wobblingshoveit': 'Wobbling Shove-it'}
+    'wobbling360shoveit': 'Wobbling 360Shove-it',
+    'wobblingkickflip': 'Wobbling Kickflip',
+    'varialheel' : 'Varial Heel'}
 
 def trick_title(cleaned_name):
     return dict_trick_titles[cleaned_name]
@@ -233,10 +258,10 @@ dict_def_titles = {
     ('doublekickflip','ollie'): 'From double kickflip to ollie',
     ('shoveit','varialdoubleflip'): 'From shove-it to varial doubleflip',
     ('varialdoubleflip','shoveit'): 'From varial doubleflip to shove-it',
-    ('wobbling360shoveit','360shoveit') : 'Unwobbling 360 shove-it',
-    ('wobblingkickflip','kickflip') : 'Unwobbling kickflip',
     ('hardflip','muskahardflip'): 'From hardflip to Muska hardflip',
-    ('muskahardflip','hardflip'): 'From Muska hardflip to hardflip'}
+    ('muskahardflip','hardflip'): 'From Muska hardflip to hardflip',
+    ('wobbling360shoveit','360shoveit') : 'Unwobbling 360 shove-it',
+    ('wobblingkickflip','kickflip') : 'Unwobbling kickflip'}
 
 def deformation_title(reduced_pair):
     return dict_def_titles[reduced_pair]
