@@ -1,6 +1,6 @@
 # Topological Flips  
 
-A script which can create animations of different skate tricks and generate formulas for their rotation matrices.
+A script which can create animations and spherical plots of different skate tricks and homotopies between them.
 
 Author:  
 Gabriel Martins (@holomorpheus)  
