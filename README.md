@@ -24,6 +24,21 @@ In order to use this program:
 
 __Using the main functions in the package__
 
+All currently available flip tricks can be displayed by running:
+```python
+list_fliptricks()
+```
+
+If one would like to see all available flip tricks including alternate spellings for a variety of tricks, one may do so by running:
+```python
+list_fliptricks(complete = True)
+```
+
+All currently available homotopies can be displayed by running:
+```python
+list_homotopies()
+```
+
 In order to create a spherical plot of a varial kickflip, you main run:
 ```python
 sphere_flip_plot('varialkickflip')
