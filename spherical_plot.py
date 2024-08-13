@@ -32,6 +32,8 @@ def generate_axis():
     ax.set_ylim([-scope,scope])
     ax.set_zlim([-scope,scope])
     ax.set_box_aspect((1,1,1))
+    ax.azim = 35
+    ax.elev = 13
     
     # Determining gridlines
     tscope = .8*scope

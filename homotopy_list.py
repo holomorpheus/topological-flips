@@ -229,10 +229,10 @@ def unwobbling_kick(spherical=False):
 # Dictionary of deformations
 
 quaternion_homotopies = {
-    ('kickflip','heelflip'): kickflip_to_heelflip,
-    ('heelflip','kickflip'): heelflip_to_kickflip,
     ('360shoveit','fs360shoveit'): three60shoveit_to_fs360shoveit,
     ('fs360shoveit','360shoveit'): fs360shoveit_to_360shoveit,
+    ('kickflip','heelflip'): kickflip_to_heelflip,
+    ('heelflip','kickflip'): heelflip_to_kickflip,
     ('kickflip','360shoveit'): kickflip_to_360shoveit,
     ('360shoveit','kickflip'): three60shoveit_to_kickflip,
     ('heelflip','360shoveit'): heelflip_to_360shoveit,

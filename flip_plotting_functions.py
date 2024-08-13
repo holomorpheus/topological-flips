@@ -16,6 +16,7 @@ from flip_list import t
 from flip_list import symbolic_rotation_flip
 from flip_list import symbolic_quaternion_flip
 from fancy_plotting import pop_rotation
+import name_functions as NF
 
 # Flip animation functions
 def ndarray_rotation_flip(name, Nframes, margin_frames, tmax=1):
@@ -97,19 +98,31 @@ def ndarray_spherical_flip(name, Npoints):
     
     from numpy.linalg import norm
     
+    exceptions = ('360flip', '360hardflip',
+                  'laserflip', '360inwardheelflip')
+    
+    name = NF.reduce_name(name)
+    
     q = symbolic_quaternion_flip(name)
     q = q.to_Matrix()    
-    q.simplify()    
-    sq = sm.Matrix([q[0],-q[1],-q[3]])
+    symb_sphere_curve = sm.Matrix([q[0],-q[1],-q[3]])
     
-    fsq = sm.lambdify(t,sq,"numpy")
-    curve = np.zeros((3,Npoints))
+    fsc = sm.lambdify(t,symb_sphere_curve,"numpy")
+    sphere_curve = np.zeros((3,Npoints))
     
     nt = np.linspace(0,1,Npoints)
-        
-    for i in range(Npoints):
-        
-        ct = fsq(nt[i])[:,0]
-        curve[:,i] = ct/norm(ct)
     
-    return curve
+    if name not in exceptions:
+        
+        for i in range(Npoints):
+            
+            ft = fsc(nt[i])[:,0]
+            sphere_curve[:,i] = ft/norm(ft)
+            
+    else:
+        
+        for i in range(Npoints):
+            
+            sphere_curve[:,i] = fsc(nt[i])[:,0]
+    
+    return sphere_curve
